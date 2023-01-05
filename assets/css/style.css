@@ -1,0 +1,44 @@
+*{
+    /* outline: 1px solid pink; */
+    font-family: sans-serif; 
+}
+    .container{
+       
+    }
+        .attendance-head{
+            padding: 20px;
+            margin: 20px auto;
+            border: 1px solid #28684E;
+        }
+            .attendance-head img{
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+            }
+            h1,h2,h3{
+                text-align: center;
+            }
+            h1{
+                color: #28684E !important;
+            }
+        form{
+            display: inline-block;
+            padding: 20px;
+            margin: 20px 0 0 300px;
+            width: 500px;
+            border: 1px solid gray;
+        }
+            input{
+                display: block;
+                padding: 5px;
+                margin: 20px !important;
+                width: 400px;
+                height: 40px;
+            }
+            #time-in{
+                background-color: blue;
+                color: white;
+                border: none;
+
+            }
+        
