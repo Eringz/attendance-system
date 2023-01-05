@@ -27,10 +27,23 @@
 			<table class="table">
 				<tr>
 					<th>Seat No.</th>
-					<th>Student No.</th>
+					<!-- <th>Student No.</th> -->
 					<th>Student Name</th>
 					<th>Time In</th>
 				</tr>
+<?php
+		$count = 0;
+		foreach($users as $user){
+			$count++;
+?>
+				<tr>
+					<th>SEAT-23000<?= $count+ 9; ?></th>
+					<th><?= $user['last_name']?>, <?= $user['first_name']?></th>
+					<th>13:<?=$count + 9; ?></th>
+				</tr>
+<?php
+		}
+?>
 			</table>
 		</div>
 		<form action="">
