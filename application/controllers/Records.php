@@ -20,7 +20,7 @@ class Records extends CI_Controller {
 	 */
 	public function index()
 	{
-		$result['users'] = $this->user->get_all_users();
+		$result['users'] = $this->user->display_attendance_of_the_day('');
 		$this->load->view('records', $result);
 	}
 }
