@@ -20,7 +20,23 @@ class Records extends CI_Controller {
 	 */
 	public function index()
 	{
-		$result['users'] = $this->user->display_attendance_of_the_day('');
+		$subject_code = "APPSDEV1";
+		$result['records'] = $this->user->display_attendance_of_the_day($subject_code);
+
+		$subject_name = $this->subject->get_subject($subject_code);
+		$result['subject'] = implode("", $subject_name);
+
+		date_default_timezone_set('Asia/Manila');
+		$result['date'] = date('M d y h:i:s');
+
 		$this->load->view('records', $result);
 	}
+
+	public function add()
+	{
+		$attendance = $this->input->post();
+		var_dump($attendance);
+	}
+
+
 }

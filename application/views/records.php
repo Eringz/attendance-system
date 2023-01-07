@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="refresh" content="1">
 	<title>Attendance Party</title>
 	<link rel="stylesheet" href="/assets/css/style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
@@ -20,8 +21,8 @@
 	<div class="container">
 		<div class="attendance-head">
 			<h1><img src="/assets/image/cdm.png" alt=""> Colegio De Montalban Attendance Party</h1>
-			<h2>Subject</h2>
-			<h3>Date Time</h3>
+			<h2><?= $subject; ?></h2>
+			<h3><?= $date; ?></h3>
 		</div>
 		<div class="attendance-record">
 			
@@ -34,20 +35,20 @@
 				</tr>
 <?php
 		$count = 0;
-		foreach($users as $user){
+		foreach($records as $record){
 			$count++;
 ?>
 				<tr>
-					<th>SEAT-23000<?= $count+ 9; ?></th>
-					<th><?= $user['last_name']?>, <?= $user['first_name']?></th>
-					<th>13:<?=$count + 9; ?></th>
+					<td>SEAT-23000<?= $record['seat_no']; ?></td>
+					<td><?= $record['last_name']?>, <?= $record['first_name']?></td>
+					<td>13:<?=$count + 9; ?></td>
 				</tr>
 <?php
 		}
 ?>
 			</table>
 		</div>
-		<form action="">
+		<form action="add_attendees" method="POST">
 			<input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" values="<?= $this->security->get_csrf_hash(); ?>">
 			<input type="text" name="student_no" placeholder="Enter ID number">
 			<input type="password" name="password" placeholder="Enter password">
