@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'records';
 
-$route['add_attendees'] = 'records/add';
+$route['validate/timein'] = 'records/process_timein';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

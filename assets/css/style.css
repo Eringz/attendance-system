@@ -32,6 +32,9 @@
             width: 500px;
             border: 1px solid gray;
         }
+            .error div{
+                color: red !important;
+            }
             input{
                 display: block;
                 padding: 5px;
@@ -45,4 +48,5 @@
                 border: none;
 
             }
+
         

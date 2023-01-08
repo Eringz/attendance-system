@@ -3,20 +3,33 @@
 
     class User extends CI_Model
     {
-        function display_attendance_of_the_day($subject_code)
+        function get_user_by_student_no($student_no)
         {
-            $query = "SELECT users.id, first_name, last_name, 
-            roles.id AS role_id, role, 
-            subject_code, subject_name, subject_sched,
-            seats.id AS seat_no  
-            FROM attendances
-            INNER JOIN users ON users.id = attendances.user_id
-            INNER JOIN subjects ON subjects.id = attendances.subject_id
-            INNER JOIN seats ON seats.id = attendances.seat_id
-            LEFT JOIN roles ON roles.id = users.role_id
-            WHERE subject_code = ?";
-            $values = array($subject_code);
-            return $this->db->query($query, $values)->result_array();
+            $query = "SELECT * FROM users WHERE users.id = ?";
+            $values = array($student_no);
+            return $this->db->query($query, $values)->row_array();
         }
         
+        function validate_timein($student_no)
+        {
+            $this->form_validation->set_error_delimiters('<div>', '</div>');
+            $this->form_validation->set_rules('student_no', 'Student No', 'required');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+        
+            if(!$this->form_validation->run()){
+                return validation_errors();
+            }
+        }
+        
+        function validate_timein_match($attendee, $password)
+        {
+            $hash_password = md5($this->security->xss_clean($password));
+            
+            if($attendee && $attendee['password'] == $hash_password){
+                return "success";
+            }else{
+                return "Incorrect Id number / Password";
+            }
+        }
+
     }

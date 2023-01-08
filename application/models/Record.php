@@ -3,7 +3,7 @@
 
     class Record extends CI_Model
     {
-        function get_attendance_of_the_day($subject_code)
+        function get_attendance_of_the_class($subject_code)
         {
             $query = "SELECT users.id, first_name, last_name, 
             roles.id AS role_id, role, 
@@ -18,4 +18,6 @@
             $values = array($subject_code);
             return $this->db->query($query, $values)->result_array();
         }
+
+        
     }

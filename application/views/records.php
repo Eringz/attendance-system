@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="refresh" content="1">
+	<!-- <meta http-equiv="refresh" content="1"> -->
 	<title>Attendance Party</title>
 	<link rel="stylesheet" href="/assets/css/style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
@@ -15,6 +15,11 @@
                 width: 80px;
                 height: 80px;
             }
+			.error div{
+                color: red !important;
+				text-align: center;
+            }
+
 	</style>
 </head>
 <body>
@@ -48,7 +53,8 @@
 ?>
 			</table>
 		</div>
-		<form action="add_attendees" method="POST">
+		<form action="/validate/timein" method="POST">
+			<div class="error"><?= $this->session->flashdata('input_errors');?></div>
 			<input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" values="<?= $this->security->get_csrf_hash(); ?>">
 			<input type="text" name="student_no" placeholder="Enter ID number">
 			<input type="password" name="password" placeholder="Enter password">
