@@ -3,7 +3,7 @@
 
     class Record extends CI_Model
     {
-        function get_attendance_of_the_class($subject_code)
+        function get_attendance_of_the_class($subject_id)
         {
             $query = "SELECT users.id, first_name, last_name, 
             roles.id AS role_id, role, 
@@ -14,9 +14,14 @@
             INNER JOIN subjects ON subjects.id = attendances.subject_id
             INNER JOIN seats ON seats.id = attendances.seat_id
             LEFT JOIN roles ON roles.id = users.role_id
-            WHERE subject_code = ?";
-            $values = array($subject_code);
+            WHERE subjects.id = ?";
+            $values = array($subject_id);
             return $this->db->query($query, $values)->result_array();
+        }
+
+        function add_attendance($attendee)
+        {
+            return $attendee;
         }
 
         

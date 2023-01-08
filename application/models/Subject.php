@@ -3,9 +3,9 @@
 
     class Subject extends CI_Model
     {
-        function get_subject($subject_code)
+        function get_subject($subject_id)
         {
-            $query = 'SELECT subject_name FROM subjects WHERE subject_code = ?';
-            return $this->db->query($query, $subject_code)->row_array();
+            $query = 'SELECT subject_name FROM subjects WHERE id = ?';
+            return $this->db->query($query, $subject_id)->row_array();
         }
     }

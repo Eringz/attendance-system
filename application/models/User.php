@@ -18,6 +18,8 @@
         
             if(!$this->form_validation->run()){
                 return validation_errors();
+            }else{
+                return "success";
             }
         }
         
