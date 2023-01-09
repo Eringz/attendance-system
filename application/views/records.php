@@ -46,7 +46,7 @@
 				<tr>
 					<td>SEAT-23000<?= $record['seat_no']; ?></td>
 					<td><?= $record['last_name']?>, <?= $record['first_name']?></td>
-					<td>13:<?=$count + 9; ?></td>
+					<td>13:<?= $record['present_time'] ?></td>
 				</tr>
 <?php
 		}
