@@ -19,7 +19,8 @@ class Records extends CI_Controller {
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
 	public function index()
-	{				
+	{		
+		$this->session->set_userdata('seat_no', 3);		
 		$this->session->userdata('seat_no');
 		$subject_id = 1;
 		$result['records'] = $this->record->get_attendance_of_the_class($subject_id);
@@ -28,7 +29,8 @@ class Records extends CI_Controller {
 		$result['subject'] = implode("", $subject_name);
 
 		date_default_timezone_set('Asia/Manila');
-		$result['date'] = date('m d y');
+		$result['date'] = date('M d y');
+		$result['time'] = date('g:i a');
 
 		$this->load->view('records', $result);
 		$this->output->enable_profiler();

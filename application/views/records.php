@@ -28,6 +28,7 @@
 			<h1><img src="/assets/image/cdm.png" alt=""> Colegio De Montalban Attendance Party</h1>
 			<h2><?= $subject; ?></h2>
 			<h3><?= $date; ?></h3>
+			<h3><?= $time; ?></h3>
 		</div>
 		<div class="attendance-record">
 			
