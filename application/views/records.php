@@ -10,45 +10,63 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
 	<style>
-		.attendance-head img{
+			img{
                 display: inline-block;
-                width: 80px;
-                height: 80px;
+                width: 50px;
+                height: 50px;
             }
 			.error div{
                 color: red !important;
 				text-align: center;
             }
-
+			h1{
+				display: inline;
+				margin-left: 10px;
+				font-size: 1.5rem;
+			}
+			.col{
+				width: 150px;
+			}
+			h3{
+				display: inline-block; 
+				text-align: start; 
+				font-size: 1.5rem;
+			}
 	</style>
 </head>
 <body>
+	<div class="head">
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid px-3">
+				<a class="navbar-brand" style="width: 400px;" href="#"><img src="/assets/image/cdm.png" alt=""><h1>BSIT Attendance System</h1></a>
+				<a class="nav-link active" aria-current="page" style="font-weight: bolder; font-size: 1.5rem" href="#"><?= $subject; ?></a>
+				<div class="row">
+					<div class="col"><?= $date; ?></div>
+					<div class="col"><?= $time; ?></div>
+				</div>
+			</div>
+		</nav>
+	</div>
 	<div class="container">
-		<div class="attendance-head">
-			<h1><img src="/assets/image/cdm.png" alt=""> Colegio De Montalban Attendance Party</h1>
-			<h2><?= $subject; ?></h2>
-			<h3><?= $date; ?></h3>
-			<h3><?= $time; ?></h3>
-		</div>
-		<div class="attendance-record">
-			
-			<table class="table">
-				<tr>
-					<th>Seat No.</th>
-					<!-- <th>Student No.</th> -->
-					<th>Student Name</th>
-					<th>Time In</th>
-				</tr>
+	<h2 class="my-2">ATTENDANCE RECORD</h2>
+	<h3>Instructor: </h3>
+	<div class="attendance-record">	
+		<table class="table" style="border: 1px solid gray">
+			<tr>
+				<th>SEAT NUMBER</th>
+				<th>STUDENT NAME</th>
+				<th>TIME IN</th>
+			</tr>
 <?php
 		$count = 0;
 		foreach($records as $record){
 			$count++;
 ?>
-				<tr>
-					<td>SEAT-23000<?= $record['seat_no']; ?></td>
-					<td><?= $record['last_name']?>, <?= $record['first_name']?></td>
-					<td>13:<?= $record['present_time'] ?></td>
-				</tr>
+			<tr>
+				<td><?= $record['seat_no']; ?></td>
+				<td><?= $record['last_name']?>, <?= $record['first_name']?></td>
+				<td><?= $time ?></td>
+			</tr>
 <?php
 		}
 ?>
